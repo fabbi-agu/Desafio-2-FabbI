@@ -1,0 +1,27 @@
+<p class="aviso-importante" *ngIf="seVe">Para visualizar la lista de usuarios en pantalla, es necesario que primero ENVIÉ algunos usuarios.*</p>
+
+<div class="content">
+    <div class="container"  >
+        <h2>Formulario de Usurio</h2>
+        <form #datosQueIngresan="ngForm" (ngSubmit)="agregarUsuario()">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="correo">
+            </div>
+            <button (click)="ocultarParrafo()"  type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+<h2 *ngIf="!seVe">Lista de Usuarios:</h2>
+<ul>
+  <li *ngFor="let usuario of usuarios">{{ usuario.nombre }} {{ usuario.apellido }} {{ usuario.mail }}</li>
+</ul>
+
